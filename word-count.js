@@ -4,8 +4,7 @@ const fs = require("fs");
 const Color = {
   GREEN: '\x1b[32m',
   YELLOW: '\x1b[33m',
-  CYAN: '\x1b[36m',
-  RED: '\x1b[31m'
+  CYAN: '\x1b[36m'
 };
 
 /**
@@ -15,21 +14,19 @@ const Color = {
  */
 function wordCount(file) {
   try {
-    const words = fs.readFileSync(file, 'utf8').split(/[\s.,;]+/);
+    const words = fs.readFileSync(file, 'utf8').match(/[^\s.,;]+/g);
     const counts = {};
-
     for (const word of words) {
       const lcWord = word.toLowerCase();
       counts[lcWord] = (counts[lcWord] || 0) + 1;
     }
-
     return Object.entries(counts).sort((a, b) => b[1] - a[1]);
   } catch (error) {
     // Handle error
     if (error.code === 'ENOENT') {
-      console.error(Color.RED, 'Error: The file does not exist.');
+      console.error('Error: The file does not exist.');
     } else {
-      console.error(Color.RED, 'Error occurred:', error.message);
+      console.error('Error occurred:', error.message);
     }
   }
 }
@@ -40,19 +37,17 @@ function wordCount(file) {
  */
 function printResult(sortedCounts) {
   let words = 0;
-  let characters = 0;
   let frequencies = '';
 
   // Sums & Concatenates
   for (const [word, count] of sortedCounts) {
     words += count;
-    characters += word.length;
     frequencies += `${word}: ${count}\n`;
   }
 
   // Printing
   console.log(Color.GREEN, '\n## WORD COUNT CHALLENGE! ##');
-  console.log(Color.YELLOW, `\n${words} words, ${characters} characters`);
+  console.log(Color.YELLOW, `\n${words} words`);
   console.log(Color.CYAN, `\n${frequencies}`);
 }
 
@@ -63,3 +58,7 @@ if (require.main === module) {
     printResult(result);
   }
 }
+
+module.exports = {
+  wordCount
+};
