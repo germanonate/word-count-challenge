@@ -14,7 +14,7 @@ const Color = {
  */
 function wordCount(file) {
   try {
-    const words = fs.readFileSync(file, 'utf8').match(/[^\s.,;]+/g);
+    const words = fs.readFileSync(file, 'utf8').match(/[^\s.,;:]+/g);
     const counts = {};
     for (const word of words) {
       const lcWord = word.toLowerCase();

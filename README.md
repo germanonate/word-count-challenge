@@ -1,5 +1,5 @@
 
-# Word Count
+# Word Count Challenge
 
   
 
@@ -13,7 +13,10 @@ A Node.js script that counts the words in a file and displays the word frequency
 
 - Displays the word count and frequency in a formatted manner.
 
-  
+## Prerequisites 
+
+Before using this script, ensure that you have Node.js installed on your system. If you don't have it installed, you can download and install it from the official Node.js website.
+[Download Node.js](https://nodejs.org)
 
 ## Installation
 
@@ -33,13 +36,14 @@ A Node.js script that counts the words in a file and displays the word frequency
 
 Run the script with a file path as a command-line argument:
 
-    node word-count.js <file-path>
+    npm start --path=<file-path>
 
 Replace <file-path> with the path to the file you want to count the words in.
 
-Example:
+Examples:
 
-    node word-count.js ./samples/text.txt
+    npm start --path=./samples/text.txt
+    npm start --path=/Users/xxx/xxx/xxx.txt
 
 ## Output
 
@@ -56,6 +60,7 @@ The project includes tests using Jest. To run the tests, use the following comma
     npm test
 
 Make sure to install the dependencies before running the tests.
+For more information on using Jest for testing, refer to the [Jest documentation](https://jestjs.io/docs/getting-started).
 
 ## Contributing
 

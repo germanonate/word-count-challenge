@@ -12,6 +12,11 @@ const sortAlphabetically = (array) => {
   return array;
 };
 
+// Testing filenames
+const NON_EXISTING_FILE = 'non-existent-file.txt';
+const TEXT_FILE = './testing/text.txt';
+const MIXED_TEXT_FILE = './testing/mixed-text.txt';
+
 describe('wordCount method', () => {
   test('should handle error when file does not exist', () => {
     const errorMessage = 'Error: The file does not exist.';
@@ -25,7 +30,7 @@ describe('wordCount method', () => {
 
     const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
 
-    wordCount('non-existent-file.txt');
+    wordCount(NON_EXISTING_FILE);
 
     expect(consoleSpy).toHaveBeenCalledWith(errorMessage);
 
@@ -65,13 +70,13 @@ describe('wordCount method', () => {
       ['worldwide', 1]
     ];
     
-    const result = wordCount('./testing/text.txt');
+    const result = wordCount(TEXT_FILE);
     expect(result).toEqual(expectedCounts);
   });
 
   test('should count the same words for two files where one is mixed', () => {    
-    const result = wordCount('./testing/text.txt');
-    const mixedResult = wordCount('./testing/text-mixed.txt');
+    const result = wordCount(TEXT_FILE);
+    const mixedResult = wordCount(MIXED_TEXT_FILE);
 
     expect(sortAlphabetically(result)).toEqual(sortAlphabetically(mixedResult));
   });
