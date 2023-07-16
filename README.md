@@ -9,7 +9,7 @@ A Node.js script that counts the words in a file and displays the word frequency
 
 ## Features
 
-- Reads a file and extracts words using regular expressions.
+- Reads a .txt file and extracts words using regular expressions.
 
 - Displays the word count and frequency in a formatted manner.
 
@@ -28,7 +28,7 @@ Before using this script, ensure that you have Node.js installed on your system.
 
     cd word-count-challenge
 
-3. Install the dependencies:
+3. If you want to run test cases, install the dependencies:
 
     npm install
 
@@ -38,7 +38,7 @@ Run the script with a file path as a command-line argument:
 
     npm start --path=<file-path>
 
-Replace <file-path> with the path to the file you want to count the words in.
+Replace <file-path> with the path to the file you want to count the words in. Check file extensions allowed.
 
 Examples:
 

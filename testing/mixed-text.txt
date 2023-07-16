@@ -1,3 +1,4 @@
-JavaScript is versatility and flexibility make it an essential tool for developers worldwide.
+JavaScript is versatility and flexibility make it an essential tool for developers worldwide!
 JavaScript is a powerful language for web development.
-With JavaScript, you can create interactive web applications and build responsive, modern websites.
+With JavaScript, you can create interactive 
+web applications and build (responsive), modern websites.
