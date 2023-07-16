@@ -1,4 +1,8 @@
 const fs = require("fs");
+const path = require('path');
+
+// Allowed text extensions
+const textExtensions = ['.txt'];
 
 // Font colors
 const Color = {
@@ -14,12 +18,23 @@ const Color = {
  */
 function wordCount(file) {
   try {
-    const words = fs.readFileSync(file, 'utf8').match(/[^\s.,;:]+/g);
+    // Checking file extension
+    const fileExtension = path.extname(file);
+    if (!textExtensions.includes(fileExtension)) {
+      throw new Error(`Invalid file extension. File extensions supported: ${textExtensions}`);
+    }
+
+    // Reading file and matching words by RegEx
+    const words = fs.readFileSync(file, 'utf8').match(/\b\w+\b/g);
     const counts = {};
+
+    // Counting word by frequency
     for (const word of words) {
       const lcWord = word.toLowerCase();
       counts[lcWord] = (counts[lcWord] || 0) + 1;
     }
+
+    // Sorting result by frequency DESC
     return Object.entries(counts).sort((a, b) => b[1] - a[1]);
   } catch (error) {
     // Handle error
@@ -28,6 +43,7 @@ function wordCount(file) {
     } else {
       console.error('Error occurred:', error.message);
     }
+    return null; // Return null in case of error
   }
 }
 
